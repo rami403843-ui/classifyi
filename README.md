@@ -39,3 +39,4 @@ python manage.py runserver
 
 ## Скриншоты
 (добавь сюда 3–5 скриншотов: главная, детальная, форма, поиск, мои объявления)
+<img width="1702" height="825" alt="Снимок экрана 2026-07-21 155129" src="https://github.com/user-attachments/assets/c619aefe-79af-4a5f-bc09-dc974268e8d1" />
