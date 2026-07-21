@@ -40,3 +40,9 @@ python manage.py runserver
 ## Скриншоты
 (добавь сюда 3–5 скриншотов: главная, детальная, форма, поиск, мои объявления)
 <img width="1702" height="825" alt="Снимок экрана 2026-07-21 155129" src="https://github.com/user-attachments/assets/c619aefe-79af-4a5f-bc09-dc974268e8d1" />
+<img width="1285" height="603" alt="Снимок экрана 2026-07-21 155346" src="https://github.com/user-attachments/assets/bea14b13-e095-4ae5-8121-2ae10261187a" />
+<img width="1097" height="592" alt="Снимок экрана 2026-07-21 155503" src="https://github.com/user-attachments/assets/3bfb5548-308e-4012-90de-5892b8fc5236" />
+<img width="1293" height="569" alt="Снимок экрана 2026-07-21 155626" src="https://github.com/user-attachments/assets/4be0c719-d2de-43fd-a390-85da74a4ab59" />
+<img width="1194" height="892" alt="Снимок экрана 2026-07-21 155723" src="https://github.com/user-attachments/assets/2c2d5bf8-09f1-4047-b1eb-9211461d60ed" />
+
+
