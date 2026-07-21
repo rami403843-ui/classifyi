@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="form-box">
+    <h1>Удалить объявление?</h1>
+    <p>«{{ ad.title }}» будет удалено навсегда.</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Да, удалить</button>
+        <a href="{% url 'ad_detail' ad.pk %}" class="btn btn-ghost">Отмена</a>
+    </form>
+</div>
+
+{% endblock %}

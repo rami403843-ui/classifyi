@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="form-box">
+    <h1>{{ title }}</h1>
+    <!-- enctype нужен, чтобы отправлялись файлы (фото) -->
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <p>
+            <label>Фото (можно выбрать несколько):</label><br>
+            <input type="file" name="images" multiple accept="image/*">
+        </p>
+        {% if ad and ad.images.all %}
+        <p class="muted">Уже загружено фото: {{ ad.images.count }}</p>
+        {% endif %}
+        <button type="submit" class="btn btn-primary">Сохранить</button>
+    </form>
+</div>
+
+{% endblock %}

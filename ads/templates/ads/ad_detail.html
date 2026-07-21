@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="detail">
+    <div class="detail-photos">
+        {% for photo in ad.images.all %}
+            <img src="{{ photo.image.url }}" alt="{{ ad.title }}" class="detail-img">
+        {% empty %}
+            <div class="card-img big"><span class="no-photo">📷 Нет фото</span></div>
+        {% endfor %}
+    </div>
+
+    <div class="detail-info">
+        <h1>{{ ad.title }}
+            {% if ad.status == 'sold' %}<span class="badge sold">Продано</span>
+            {% else %}<span class="badge active">Активно</span>{% endif %}
+        </h1>
+        <p class="price-big">{{ ad.price }} сом</p>
+        <p class="muted">
+            {{ ad.get_category_display }} · Автор: {{ ad.author.username }} ·
+            {{ ad.created_at|date:"d.m.Y" }} · 👁 {{ ad.views }} просмотров
+        </p>
+        <hr>
+        <p class="desc">{{ ad.description|linebreaks }}</p>
+
+        {% if user == ad.author %}
+        <div class="owner-actions">
+            <a href="{% url 'ad_edit' ad.pk %}" class="btn btn-primary">✏️ Редактировать</a>
+            <a href="{% url 'ad_delete' ad.pk %}" class="btn btn-danger">🗑 Удалить</a>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+<a href="{% url 'ad_list' %}" class="back-link">← Ко всем объявлениям</a>
+
+{% endblock %}

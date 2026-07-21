@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1 class="page-title">Мои объявления</h1>
+
+{% if ads %}
+<div class="grid">
+    {% for ad in ads %}
+    <a href="{% url 'ad_detail' ad.pk %}" class="card">
+        <div class="card-img">
+            {% if ad.first_image %}
+                <img src="{{ ad.first_image.image.url }}" alt="{{ ad.title }}">
+            {% else %}
+                <span class="no-photo">📷 Нет фото</span>
+            {% endif %}
+        </div>
+        <div class="card-body">
+            <span class="price-tag">{{ ad.price }} сом</span>
+            <h3>{{ ad.title }}</h3>
+            <p class="muted">
+                {% if ad.status == 'sold' %}<span class="badge sold">Продано</span>
+                {% else %}<span class="badge active">Активно</span>{% endif %}
+                👁 {{ ad.views }}
+            </p>
+        </div>
+    </a>
+    {% endfor %}
+</div>
+{% else %}
+<p class="empty">У вас пока нет объявлений. <a href="{% url 'ad_create' %}">Создайте первое!</a></p>
+{% endif %}
+
+{% endblock %}

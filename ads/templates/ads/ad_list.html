@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1 class="page-title">Свежие объявления</h1>
+
+<!-- Панель поиска и фильтров -->
+<form method="get" class="filters">
+    <input type="text" name="q" value="{{ q }}" placeholder="Поиск по названию...">
+    <select name="category">
+        <option value="">Все категории</option>
+        {% for value, name in categories %}
+            <option value="{{ value }}" {% if value == category %}selected{% endif %}>{{ name }}</option>
+        {% endfor %}
+    </select>
+    <input type="number" name="min" value="{{ price_min }}" placeholder="Цена от">
+    <input type="number" name="max" value="{{ price_max }}" placeholder="Цена до">
+    <button type="submit" class="btn btn-primary">Найти</button>
+    <a href="{% url 'ad_list' %}" class="btn btn-ghost">Сбросить</a>
+</form>
+
+{% if ads %}
+<div class="grid">
+    {% for ad in ads %}
+    <a href="{% url 'ad_detail' ad.pk %}" class="card">
+        <div class="card-img">
+            {% if ad.first_image %}
+                <img src="{{ ad.first_image.image.url }}" alt="{{ ad.title }}">
+            {% else %}
+                <span class="no-photo">📷 Нет фото</span>
+            {% endif %}
+        </div>
+        <div class="card-body">
+            <span class="price-tag">{{ ad.price }} сом</span>
+            <h3>{{ ad.title }}</h3>
+            <p class="muted">{{ ad.get_category_display }} · 👁 {{ ad.views }}</p>
+        </div>
+    </a>
+    {% endfor %}
+</div>
+{% else %}
+<p class="empty">Ничего не найдено. Попробуйте изменить фильтры или <a href="{% url 'ad_list' %}">сбросить поиск</a>.</p>
+{% endif %}
+
+{% endblock %}
